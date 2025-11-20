@@ -11,4 +11,5 @@ import org.junit.runner.RunWith;
 				"pretty", "html:reports/cucumber.html", "json:reports/cucumber.json",
 				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm" }, publish = true, tags="@tfsa", monochrome = true)
 public class CucumberRunner {
+	
 }
