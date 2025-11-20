@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="0.326" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-10-30T18:27:58.035499700Z">
+<testcase classname="TFSA Calculator Functionality" name="Calculate TFSA savings for different user profiles - #1.1" time="0.056">
+<system-out><![CDATA[
+Given I am on the Scotiabank TFSA Calculator page...........................passed
+When I enter "10" years for savings term....................................passed
+And I choose to invest with mixed income and growth.........................passed
+And I enter starting amount "1000"..........................................passed
+And I enter periodic investment "100".......................................passed
+And I select contribution frequency "Monthly"...............................passed
+And I select province "ON"..................................................passed
+And I enter annual income "50000"...........................................passed
+And I click on View Results.................................................passed
+Then I should see a results section displayed...............................passed
+]]></system-out>
+</testcase>
+<testcase classname="TFSA Calculator Functionality" name="Calculate TFSA savings for different user profiles - #1.2" time="0.057">
+<system-out><![CDATA[
+Given I am on the Scotiabank TFSA Calculator page...........................passed
+When I enter "15" years for savings term....................................passed
+And I choose to invest with mixed income and growth.........................passed
+And I enter starting amount "5000"..........................................passed
+And I enter periodic investment "200".......................................passed
+And I select contribution frequency "Weekly"................................passed
+And I select province "BC"..................................................passed
+And I enter annual income "75000"...........................................passed
+And I click on View Results.................................................passed
+Then I should see a results section displayed...............................passed
+]]></system-out>
+</testcase>
+</testsuite>

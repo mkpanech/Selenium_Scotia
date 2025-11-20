@@ -1,0 +1,33 @@
+package com.scotiabank.utils;
+ 
+import org.apache.poi.ss.usermodel.*;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+ 
+public class ExcelConfig {
+    private static final Map<String, String> CONFIG = new HashMap<>();
+    static {
+        try (
+            InputStream fis = ExcelConfig.class.getResourceAsStream("/testData/Scotiabank_Data.xlsx")
+        ) {
+            if (fis == null) throw new RuntimeException("Missing resource: /testData/Scotiabank_Data.xlsx");
+            Workbook wb = WorkbookFactory.create(fis);
+            Sheet s = wb.getSheet("Config"); // one sheet only
+            DataFormatter f = new DataFormatter();
+            for (int r = 1; r <= s.getLastRowNum(); r++) { // row 0 = headers
+                Row row = s.getRow(r);
+                if (row == null) continue;
+                String k = f.formatCellValue(row.getCell(0)).trim();
+                String v = f.formatCellValue(row.getCell(1)).trim();
+                if (!k.isEmpty()) CONFIG.put(k, v);
+            }
+            wb.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+ 
+    public static String get(String key) { return CONFIG.get(key); }
+    public static String get(String module, String key) { return CONFIG.get(key); }
+}
